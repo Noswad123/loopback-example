@@ -1,7 +1,4 @@
 "use strict";
-// Copyright IBM Corp. 2017,2018. All Rights Reserved. Node module:
-// @loopback/example-todo This file is licensed under the MIT License. License
-// text available at https://opensource.org/licenses/MIT
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -13,7 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const repository_1 = require("@loopback/repository");
-let Todo = class Todo extends repository_1.Entity {
+const todo_model_1 = require("./todo.model");
+let TodoList = class TodoList extends repository_1.Entity {
     constructor(data) {
         super(data);
     }
@@ -21,34 +19,26 @@ let Todo = class Todo extends repository_1.Entity {
 __decorate([
     repository_1.property({ type: 'number', id: true }),
     __metadata("design:type", Number)
-], Todo.prototype, "id", void 0);
+], TodoList.prototype, "id", void 0);
 __decorate([
     repository_1.property({ type: 'string', required: true }),
     __metadata("design:type", String)
-], Todo.prototype, "title", void 0);
+], TodoList.prototype, "title", void 0);
 __decorate([
     repository_1.property({ type: 'string' }),
     __metadata("design:type", String)
-], Todo.prototype, "desc", void 0);
+], TodoList.prototype, "color", void 0);
 __decorate([
-    repository_1.property({ type: 'boolean' }),
-    __metadata("design:type", Boolean)
-], Todo.prototype, "isComplete", void 0);
-__decorate([
-    repository_1.property({ type: 'string' }),
-    __metadata("design:type", String)
-], Todo.prototype, "remindAtAddress", void 0);
+    repository_1.hasMany(todo_model_1.Todo),
+    __metadata("design:type", Array)
+], TodoList.prototype, "todos", void 0);
 __decorate([
     repository_1.property(),
     __metadata("design:type", Number)
-], Todo.prototype, "todoListId", void 0);
-__decorate([
-    repository_1.property({ type: 'string' }),
-    __metadata("design:type", String)
-], Todo.prototype, "remindAtGeo", void 0);
-Todo = __decorate([
+], TodoList.prototype, "todoListId", void 0);
+TodoList = __decorate([
     repository_1.model(),
     __metadata("design:paramtypes", [Object])
-], Todo);
-exports.Todo = Todo;
-//# sourceMappingURL=todo.model.js.map
+], TodoList);
+exports.TodoList = TodoList;
+//# sourceMappingURL=todo-list.model.js.map

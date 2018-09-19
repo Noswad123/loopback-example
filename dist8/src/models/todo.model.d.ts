@@ -5,6 +5,7 @@ export declare class Todo extends Entity {
     desc?: string;
     isComplete?: boolean;
     remindAtAddress?: string;
+    todoListId: number;
     remindAtGeo?: string;
     constructor(data?: Partial<Todo>);
 }
